@@ -1,0 +1,31 @@
+package com.achmadhadikurnia.kanekesteam;
+
+public class Team {
+    private String name;
+    private String job;
+    private String photo;
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getJob() {
+        return job;
+    }
+
+    public void setJob(String job) {
+        this.job = job;
+    }
+
+    public String getPhoto() {
+        return photo;
+    }
+
+    public void setPhoto(String photo) {
+        this.photo = photo;
+    }
+}
