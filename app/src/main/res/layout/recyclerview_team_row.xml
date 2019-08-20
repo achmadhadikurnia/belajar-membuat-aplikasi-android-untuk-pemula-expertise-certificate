@@ -44,6 +44,6 @@
             android:id="@+id/button_team_detail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Get Email" />
+            android:text="Detail" />
     </LinearLayout>
 </RelativeLayout>

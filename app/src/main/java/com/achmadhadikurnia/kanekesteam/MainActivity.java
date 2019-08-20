@@ -34,17 +34,33 @@ public class MainActivity extends AppCompatActivity {
         showRecyclerList();
     }
 
-    private void showRecyclerList() {
-        recyclerViewTeam.setLayoutManager(new LinearLayoutManager(this));
-        TeamListAdaptor listHeroAdapter = new TeamListAdaptor(list);
-        recyclerViewTeam.setAdapter(listHeroAdapter);
-    }
-
     public boolean onOptionsItemSelected(MenuItem item) {
         if (item.getItemId() == R.id.button_about) {
             startActivity(new Intent(this, AboutActivity.class));
         }
 
         return true;
+    }
+
+    private void showSelectedTeam(Team team) {
+        Intent moveWithDataIntent = new Intent(MainActivity.this, AboutActivity.class);
+        moveWithDataIntent.putExtra(AboutActivity.AUTHOR_AVATAR, team.getPhoto());
+        moveWithDataIntent.putExtra(AboutActivity.AUTHOR_NAME, team.getName());
+        moveWithDataIntent.putExtra(AboutActivity.AUTHOR_JOBTITLE, team.getJob());
+        moveWithDataIntent.putExtra(AboutActivity.AUTHOR_EMAIL, team.getEmail());
+        startActivity(moveWithDataIntent);
+    }
+
+    protected void showRecyclerList() {
+        recyclerViewTeam.setLayoutManager(new LinearLayoutManager(this));
+        TeamListAdaptor teamListAdaptor = new TeamListAdaptor(list);
+        recyclerViewTeam.setAdapter(teamListAdaptor);
+
+        TeamListAdaptor.setOnItemClickCallback(new TeamListAdaptor.OnItemClickCallback() {
+            @Override
+            public void onItemClicked(Team data) {
+                showSelectedTeam(data);
+            }
+        });
     }
 }

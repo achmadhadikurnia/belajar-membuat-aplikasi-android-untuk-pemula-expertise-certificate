@@ -8,7 +8,6 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
@@ -16,7 +15,12 @@ import com.bumptech.glide.request.RequestOptions;
 import java.util.ArrayList;
 
 public class TeamListAdaptor extends RecyclerView.Adapter<TeamListAdaptor.ListViewHolder> {
+    private static OnItemClickCallback onItemClickCallback;
     private ArrayList<Team> listTeam;
+
+    public static void setOnItemClickCallback(OnItemClickCallback onItemClickCallback) {
+        TeamListAdaptor.onItemClickCallback = onItemClickCallback;
+    }
 
     public TeamListAdaptor(ArrayList<Team> list) {
         this.listTeam = list;
@@ -34,18 +38,20 @@ public class TeamListAdaptor extends RecyclerView.Adapter<TeamListAdaptor.ListVi
         Team team = listTeam.get(position);
         Glide.with(holder.itemView.getContext())
                 .load(team.getPhoto())
-                .apply(new RequestOptions().override(55, 55))
+                .apply(new RequestOptions())
                 .into(holder.imageView_team_avatar);
         holder.textView_team_name.setText(team.getName());
         holder.textView_team_job.setText(team.getJob());
-
         holder.button_team_detail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(holder.itemView.getContext(), "Email: " +
-                        listTeam.get(holder.getAdapterPosition()).getEmail(), Toast.LENGTH_SHORT).show();
+                onItemClickCallback.onItemClicked(listTeam.get(holder.getAdapterPosition()));
             }
         });
+    }
+
+    public interface OnItemClickCallback {
+        void onItemClicked(Team data);
     }
 
     @Override
