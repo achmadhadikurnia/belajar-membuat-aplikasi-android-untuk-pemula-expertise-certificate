@@ -4,6 +4,8 @@ Buat aplikasi pertamamu pada Android Studio dengan mempelajari dasar Activity, I
 ## Class
 [View](https://www.dicoding.com/academies/51)
 
-## Certificate
+## Submission
+[View](https://github.com/achmadhadikurnia/belajar-membuat-aplikasi-android-untuk-pemula-dicoding-submission)
 
+## Certificate
 [View](https://www.dicoding.com/certificates/MRZM4D3G0XYQ)
