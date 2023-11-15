@@ -1,4 +1,4 @@
-# Dicoding: Belajar Membuat Aplikasi Android untuk Pemula
+# Belajar Membuat Aplikasi Android untuk Pemula | Dicoding's Course
 Buat aplikasi pertamamu pada Android Studio dengan mempelajari dasar Activity, Intent, View & ViewGroup, Style & Theme sampai RecyclerView.
 
 ## Class
